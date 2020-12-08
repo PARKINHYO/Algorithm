@@ -1,20 +1,18 @@
-global count
+# import pprint
 
 class Solution:
     def __init__(self):
-        global count
-        count = 1
-
-
+        self.count = 0
+        
     def removeDuplicateLetters(self, s: str) -> str:
-        global count
+        
         print()
-        print(f'{count}번째 재귀함수')
+        print(f'{self.count}번째 재귀함수')
         print(f's = {s}')
-        count += 1
+        self.count += 1
         tmp = 1
         for char in sorted(set(s)):
-            print(f'{tmp}번째 for문 sorted(set(s) : {sorted(set(s))}')
+            print(f'{tmp}번째 for문 sorted(set(s)) : {sorted(set(s))}')
             tmp += 1
             suffix = s[s.index(char):]
             print(f'char = {char}')
@@ -26,10 +24,17 @@ class Solution:
                 return char + self.removeDuplicateLetters(suffix.replace(char, ''))
 
         return ''
+    
+answer1 = Solution().removeDuplicateLetters("bcabc")
+print(f'answer : {answer1}')
+
+answer2 = Solution().removeDuplicateLetters("cbacdcbc")
+print(f'answer : {answer2}')
+
+answer3 = Solution().removeDuplicateLetters("ebcabc")
+print(f'answer : {answer3}')
+
+answer4 = Solution().removeDuplicateLetters("ebcabce")
+print(f'answer : {answer4}')
 
 
-# answer = Solution().removeDuplicateLetters("cbacdcbc")
-answer = Solution().removeDuplicateLetters("ebcabc")
-print()
-print()
-print(answer)
