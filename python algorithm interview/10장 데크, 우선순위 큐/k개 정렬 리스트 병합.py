@@ -1,10 +1,12 @@
 from typing import List
 import heapq
 
+
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
@@ -18,7 +20,7 @@ class Solution:
         while heap:
             node = heapq.heappop(heap)
             idx = node[1]
-            result.next =node[2]
+            result.next = node[2]
 
             result = result.next
             if result.next:
@@ -26,7 +28,9 @@ class Solution:
 
         return root.next
 
+
 l1 = ListNode(1)
+
 l1.next = ListNode(4)
 l1.next.next = ListNode(5)
 
