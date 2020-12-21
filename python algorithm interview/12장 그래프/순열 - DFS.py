@@ -25,9 +25,4 @@ class Solution:
         dfs(nums)
         return results
 
-
-# class Solution:
-#     def permute(self, nums: List[int]):
-#         return list(map(list,itertools.permutations(nums)))
-# #
 # print(Solution().permute([1,2,3]))
