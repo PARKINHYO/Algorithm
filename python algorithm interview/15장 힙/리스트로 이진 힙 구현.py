@@ -2,10 +2,8 @@ class BinaryHeap(object):
     def __init__(self):
         self.items = [None]
 
-
     def __len__(self):
-        return len(self.items)
-
+        return len(self.items) - 1
 
     # 삽입 시 실행, 반복 구조 구현
     def _percolate_up(self):
@@ -22,26 +20,21 @@ class BinaryHeap(object):
         self.items.append(k)
         self._percolate_up()
 
-
     # 추출시 실행, 재귀 구조 구현
     def _percolate_down(self, idx):
         left = idx * 2
         right = idx * 2 + 1
         smallest = idx
 
-
         if left <= len(self) and self.items[left] < self.items[smallest]:
             smallest = left
-
 
         if right <= len(self) and self.items[right] < self.items[smallest]:
             smallest = right
 
-
         if smallest != idx:
             self.items[idx], self.items[smallest] = self.items[smallest], self.items[idx]
             self._percolate_down(smallest)
-
 
     def extract(self):
         extracted = self.items[1]
@@ -49,4 +42,3 @@ class BinaryHeap(object):
         self.items.pop()
         self._percolate_down(1)
         return extracted
-
