@@ -38,13 +38,10 @@ class Solution:
             if value in "-+*":
                 left = self.diffWaysToCompute(input[:index])
                 right = self.diffWaysToCompute(input[index + 1:])
-
+                print(left, right, value)
                 results.extend(compute(left, right, value))
+                print(results)
         return results
 
 
 print(Solution().diffWaysToCompute("2*3-4*5"))
-
-
-
-# fixme : 프로스팅 eval(), extend(), 이문제
