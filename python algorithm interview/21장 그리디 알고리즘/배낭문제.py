@@ -1,4 +1,3 @@
-
 def fractional_knapsack(cargo):
     capacity = 15
     pack = []
@@ -20,3 +19,14 @@ def fractional_knapsack(cargo):
             break
 
     return total_value
+
+
+cargo = [
+    (4, 12),
+    (2, 1),
+    (10, 4),
+    (1, 1),
+    (2, 2),
+]
+
+print(fractional_knapsack(cargo))
