@@ -1,3 +1,21 @@
+"""
+fixme. https://leetcode.com/problems/longest-palindromic-substring/
+fixme. Q06. 가장 긴 팰린드롬 부분 문자열
+fixme. 가장 긴 팰린드롬 부분 문자열을 출력하라.
+
+fixme. Input: s = "babad"
+fixme. Output: "bab" or "aba"
+
+fixme.Input: s = "cbbd"
+fixme. Output: "bb"
+
+fixme. Input: s = "a"
+fixme. Output: "a"
+
+fixme. Input: s = "ac"
+fixme. Output: "a"
+"""
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         # 팰린드롬 판별 및 투 포인터 확장
@@ -19,3 +37,5 @@ class Solution:
                          expand(i, i + 2),
                          key=len)
         return result
+
+
