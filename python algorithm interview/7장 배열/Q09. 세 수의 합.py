@@ -1,3 +1,11 @@
+"""
+fixme. https://leetcode.com/problems/3sum/
+fixme. 배열을 입력받아 합으로 0을 만들 수 있는 3개의 엘리먼트를 출력하라 .
+
+fixme. Input: nums = [-1,0,1,2,-1,-4]
+fixme. Output: [[-1,-1,2],[-1,0,1]]
+"""
+
 from typing import List
 
 
