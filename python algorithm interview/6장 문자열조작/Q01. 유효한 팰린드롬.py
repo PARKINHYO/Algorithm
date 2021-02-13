@@ -36,8 +36,7 @@ class Solution:
                 strs.append(char.lower())
 
         while len(strs) > 1:
-            if strs.popleft() != strs.pop():
-                return False
+            if strs.popleft() != strs.pop():li
 
         return True
 
