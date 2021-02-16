@@ -1,7 +1,17 @@
+"""
+fixme
+ https://leetcode.com/problems/reverse-linked-list-ii/
+ Q19. 역순 연결 리스트Ⅱ
+ 인덱스 m에서 n까지를 역순으로 ㅁ나들어라. 인덱스 m은 1부터 시작한다.
+ 입력 1 → 2 → 3 → 4 → 5 → NULL, m = 2, n = 4
+ 출력 1 → 4 → 3 → 2 → 5 → NULL
+"""
+
+
 class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 class Solution:
@@ -21,13 +31,3 @@ class Solution:
             tmp, start.next, end.next = start.next, end.next, end.next.next
             start.next.next = tmp
         return root.next
-
-
-l1 = ListNode(1)
-l1.next = ListNode(2)
-l1.next.next = ListNode(3)
-l1.next.next.next = ListNode(4)
-l1.next.next.next.next= ListNode(5)
-l1.next.next.next.next.next = ListNode(None)
-Solution().reverseBetween(l1, 2, 5)
-

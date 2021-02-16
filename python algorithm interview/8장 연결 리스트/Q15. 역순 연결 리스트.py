@@ -7,6 +7,7 @@ fixme
  출력 : 5 → 4 → 3 → 2 → 1 → NULL
 """
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -35,7 +36,3 @@ class Solution:
 
 
 Solution().reverseListRecur(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))
-
-
-
-
