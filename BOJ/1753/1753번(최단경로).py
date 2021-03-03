@@ -1,56 +1,31 @@
-import sys
+import collections
+import heapq
+from sys import stdin
 
-class Graph():
 
-    def __init__(self, vertices):
-        self.V = vertices
-        self.graph = [[0 for column in range(vertices)]
-                      for row in range(vertices)]
-
-    def printSolution(self, dist, sptSet):
-        for node in range(self.V):
-            if sptSet[node] == False:
-                print("INF")
+class Solution:
+    def shortestPath(self, V: int, E: int, K: int, graph: dict):
+        dist = collections.defaultdict(int)
+        q = [[0, K]]
+        while q:
+            time, node = heapq.heappop(q)
+            if node not in dist:
+                dist[node] = time
+                for v, w in graph[node]:
+                    alt = w + time
+                    heapq.heappush(q, (alt, v))
+        for i in range(V):
+            if i + 1 in dist:
+                print(dist[i + 1])
             else:
-                print(dist[node])
+                print("INF")
 
 
-    def minDistance(self, dist, sptSet):
-        min = 200000
-        min_index = 0
+graph = collections.defaultdict(list)
+V, E = map(int, stdin.readline().split())
+K = int(stdin.readline())
+for i in range(E):
+    u, v, w = map(int, stdin.readline().split())
+    graph[u].append((v, w))
 
-        for v in range(self.V):
-            if dist[v] < min and sptSet[v] == False:
-                min = dist[v]
-                min_index = v
-
-        return min_index
-
-    def dijkstra(self, src):
-        dist = [200000] * self.V
-        dist[src] = 0
-        sptSet = [False] * self.V
-
-        for cout in range(self.V):
-            u = self.minDistance(dist, sptSet)
-            sptSet[u] = True
-
-            for v in range(self.V):
-                if self.graph[u][v] > 0 and sptSet[v] == False and \
-                        dist[v] > dist[u] + self.graph[u][v]:
-
-                    dist[v] = dist[u] + self.graph[u][v]
-
-        self.printSolution(dist, sptSet)
-
-if __name__ == '__main__':
-    V, E = map(int, sys.stdin.readline().split(" "))
-    K = int(sys.stdin.readline())
-    g = Graph(V)
-
-    for i in range(E):
-        u, v, w = map(int, sys.stdin.readline().split(" "))
-        g.graph[u-1][v-1] = w
-
-    g.dijkstra(K-1)
-
+Solution().shortestPath(V, E, K, graph)
