@@ -16,6 +16,7 @@ class Solution:
             left = dfs(node.left)
             right = dfs(node.right)
 
+
             if node.left and node.left.val == node.val:
                 left += 1
             else:

@@ -1,40 +1,27 @@
-# import pprint
+import collections
+
 
 class Solution:
-    def __init__(self):
-        self.count = 0
-        
-    def removeDuplicateLetters(self, s: str) -> str:
-        
-        print()
-        print(f'{self.count}번째 재귀함수')
-        print(f's = {s}')
-        self.count += 1
-        tmp = 1
+    def removeDuplicateLettersRecur(self, s: str) -> str:
+        # 집합으로 정렬
         for char in sorted(set(s)):
-            print(f'{tmp}번째 for문 sorted(set(s)) : {sorted(set(s))}')
-            tmp += 1
             suffix = s[s.index(char):]
-            print(f'char = {char}')
-            print(f'suffix = {suffix}')
-            print(f'set(s) = {set(s)}')
-            print(f'set(suffix) = {set(suffix)}')
-
+            # 전체 집합과 접미사 집합이 일치할때 분리 진행
             if set(s) == set(suffix):
-                return char + self.removeDuplicateLetters(suffix.replace(char, ''))
-
+                return char + self.removeDuplicateLettersRecur(suffix.replace(char, ''))
         return ''
-    
-answer1 = Solution().removeDuplicateLetters("bcabc")
-print(f'answer : {answer1}')
 
-answer2 = Solution().removeDuplicateLetters("cbacdcbc")
-print(f'answer : {answer2}')
+    def removeDuplicateLettersStack(self, s: str) -> str:
+        counter, seen, stack = collections.Counter(s), set(), []
 
-answer3 = Solution().removeDuplicateLetters("ebcabc")
-print(f'answer : {answer3}')
+        for char in s:
+            counter[char] -= 1
+            if char in seen:
+                continue
+            # 뒤에 붙일 문자가 남아 있다면 스택에서 제거
+            while stack and char < stack[-1] and counter[stack[-1]] > 0:
+                seen.remove(stack.pop())
+            stack.append(char)
+            seen.add(char)
 
-answer4 = Solution().removeDuplicateLetters("ebcabce")
-print(f'answer : {answer4}')
-
-
+        return ''.join(stack)

@@ -1,10 +1,12 @@
 import collections
 
+
 class ListNode:
     def __init__(self, key=None, value=None):
         self.key = key
         self.value = value
         self.next = None
+
 
 class MyHashMap:
     def __init__(self):
@@ -56,4 +58,3 @@ class MyHashMap:
                 prev.next = p.next
                 return
             prev, p = p, p.next
-

@@ -4,6 +4,7 @@ class ListNode:
         self.right = None
         self.left = None
 
+
 class MyCircularDeque:
     def __init__(self, k: int):
         self.head, self.tail = ListNode(None), ListNode(None)

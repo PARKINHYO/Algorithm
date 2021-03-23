@@ -13,6 +13,7 @@ fixme. So the maximum possible sum is 4.
 
 from typing import List
 
+
 class Solution:
     def arrayPairSum1(self, nums: List[int]) -> int:
         sum = 0
@@ -36,7 +37,6 @@ class Solution:
                 sum += n
 
         return sum
-
 
     def arrayPairSum3(self, nums: List[int]) -> int:
         return sum(sorted(nums)[::2])

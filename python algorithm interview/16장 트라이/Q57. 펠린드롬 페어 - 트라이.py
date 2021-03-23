@@ -75,7 +75,3 @@ class Solution:
             results.extend(trie.search(i, word))
 
         return results
-
-
-a = Solution().palindromePairs(['d', 'cbbcd', 'dcbb', 'dcbc', 'cbbc', 'bbcd'])
-print(a)
