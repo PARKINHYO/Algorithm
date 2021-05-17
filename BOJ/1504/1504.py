@@ -12,6 +12,7 @@ A, B = map(int, sys.stdin.readline().split())
 
 route = [[1, A, B, N], [1, B, A, N]]
 answers = []
+routeA, routeB = True, True
 for i in range(2):
     roads = 0
     for j in range(len(route[0])-1):
@@ -29,9 +30,12 @@ for i in range(2):
                     heapq.heappush(Q, (tmp, v[0]))
         
         if roads == 0:
-            break
+            if i == 0:
+                routeA = False
+            elif i == 1: 
+                routeB = False
     answers.append(roads)
-if not answers:
+if not routeA and not routeB:
     print(-1)
 else:
     print(min(answers))
