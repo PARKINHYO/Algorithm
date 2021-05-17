@@ -1,14 +1,20 @@
-import sys
 import heapq
+import sys
 
-N = int(sys.stdin.readline())
+N = int(input())
 
-nxn = []
+heap = []
+
 for _ in range(N):
-    nxn.extend(list(map(int, sys.stdin.readline().split())))
+    nums = list(map(int, sys.stdin.readline().split()))
     
+    if not heap:
+        for num in nums:
+            heapq.heappush(heap, num)
+    else:
+        for num in nums:
+            if heap[0] < num:
+                heapq.heappush(heap, num)
+                heapq.heappop(heap)
 
-for _ in range(N*N-N):
-    heapq.heappop(nxn)
-    
-print(heapq.heappop(nxn))
+print(heap[0])
