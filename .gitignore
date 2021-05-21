@@ -255,9 +255,8 @@ Thumbs.db #thumbnail cache on Windows
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python
 
 # customize
-1.py
-2.py
-3.py
+.idea/
+tests/
 kpu x coupang/
 KAKAO BLIND RECRUITMENT/
 Samsung SW Expert Academy/
